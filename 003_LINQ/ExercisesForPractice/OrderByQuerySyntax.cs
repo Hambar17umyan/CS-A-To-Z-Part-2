@@ -6,69 +6,24 @@ namespace ExercisesForPractice
 {
     public static class OrderByQuerySyntax
     {
-        //Coding Exercise 1
-        /*
-        Implement the OrderFromLongestToShortest method, which given a collection of 
-        TimeSpans will order them from longest to shortest. Use LINQ's query syntax.
-
-        For example, for the following timespans:
-            *TimeSpan.FromSeconds(93)
-            *TimeSpan.FromSeconds(5)
-            *TimeSpan.FromSeconds(16)
-        
-        ...the result shall be:
-            *TimeSpan.FromSeconds(93)
-            *TimeSpan.FromSeconds(16)
-            *TimeSpan.FromSeconds(5)
-         */
         public static IEnumerable<TimeSpan>
             OrderFromLongestToShortest(
                 IEnumerable<TimeSpan> timeSpans)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return from timespan in timeSpans orderby timespan.Seconds select timespan;
         }
-
-        //Coding Exercise 2
-        /*
-        Implement the OrderPoints method using LINQ's query syntax. 
-        This method shall order points first by X, and then by Y.
-
-        For example, for the following points:
-            *X=10, Y = 7
-            *X=10, Y =5
-            *X=10, Y = 6
-            *X=7, Y = 6
-            *X=11, Y = 5
-        
-        ...the result shall be:
-            *X=7, Y = 6
-            *X=10, Y = 5
-            *X=10, Y = 6
-            *X=10, Y = 7
-            *X=11, Y = 5
-        
-        As you can see there are 3 points with X=10, so those points are ordered by Y 
-        in the result.
-         */
         public static IEnumerable<Point> OrderPoints(
              IEnumerable<Point> points)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return from point in points orderby point.X, point.Y select point; 
         }
-
-        //Refactoring challenge
-        //TODO implement this method
         public static IEnumerable<DateTime>
             OrderDatesByDayOfWeek_Refactored(
                 IEnumerable<DateTime> dates)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return from date in dates orderby date.DayOfWeek select date;
         }
 
-        //do not modify this method
         public static IEnumerable<DateTime>
             OrderDatesByDayOfWeek(
                 IEnumerable<DateTime> dates)

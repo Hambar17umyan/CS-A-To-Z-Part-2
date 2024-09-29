@@ -2,60 +2,27 @@
 {
     public static class CollectionTypeChange
     {
-        //Coding Exercise 1
-        /*
-         Implement the ParseToNumbersAndStoreInDictionary method, 
-        which given a collection of words will return a dictionary where each 
-        of the words is the key, and the value is either an integer parsed from this 
-        string or null if parsing was unsuccessful. 
-
-        For example, for input collection {"aaa", "1", "3", "bbb", "bbb"} 
-        the result shall be:       
-            ["aaa"] = null,    
-            ["1"] = 1,        
-            ["3"] = 3,        
-            ["bbb"] = null
-        
-        Please note that the string "bbb" occurred twice in the input collection,
-        but it occurs only once in the dictionary (the dictionary keys must be unique).
-         */
         public static Dictionary<string, int?> ParseToNumbersAndStoreInDictionary(
-            IEnumerable<string> words)
+             IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Distinct().ToDictionary(x => x, y => int.TryParse(y, out int res) ? (int?)res : null);
         }
 
-        //Coding Exercise 2
-        /*
-         Implement the CreateLookupByDivisibilityBy2 method, which given a collection of
-        numbers will create a Lookup with the key being a boolean saying 
-        if the number is divisible by 2, and the value will be all numbers 
-        for whom this boolean says if they are divisible by 2.
-
-        For example, for input {1,2,4,5,6,7,9}, the result shall be 
-        a Lookup with two keys and the following values:        
-            [true] = {2,4,6}        
-            [false] = {1,5,7,9}
-        */
         public static ILookup<bool, int> CreateLookupByDivisibilityBy2(
             IEnumerable<int> input)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return input.ToLookup(x => x % 2 == 0);
         }
 
-        //Refactoring challenge
-        //TODO implement this method
         public static Dictionary<string, double>
              GetStudentsAverageMarks_Refactored(
                  IEnumerable<Student> students)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return students.Select(x => (x.Marks.Average(), $"{x.FirstName} " +
+                    $"{x.LastName} born on" +
+                    $" {x.DateOfBirth.ToString("d")}")).ToDictionary(x => x.Item2, y => y.Item1);
         }
 
-        //do not modify this method
         public static Dictionary<string, double>
             GetStudentsAverageMarks(
                 IEnumerable<Student> students)

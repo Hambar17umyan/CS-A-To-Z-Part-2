@@ -1,61 +1,32 @@
-﻿namespace ExercisesForPractice
+﻿using static ExercisesForPractice.IntersectExcept;
+
+namespace ExercisesForPractice
 {
     public static class IntersectExcept
     {
-        //Coding Exercise 1
-        /*
-         Implement the CountCommonWords method, which given two collections of strings 
-        will return the count of the words that belong to both of those collections. 
-        Please note that the casing of the words does not matter.
-
-        For example, for the following collections:
-            *{"aaa", "BBB", "CCC"}
-            *{"aaa", "ccc", "DDD"}
-
-        The result shall be 2 because there are two words that occur in both collections:
-        "aaa" and "ccc". As we said, it doesn't matter if "ccc" is lower case in one 
-        collection and upper case in the other.
-         */
         public static int CountCommonWords(
             IEnumerable<string> words1,
             IEnumerable<string> words2)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return words1.Intersect(words2.Select(x => x.ToLower())).Count();
         }
 
-        //Coding Exercise 2
-        /*
-         Implement the GetExclusiveNumbers method, which given two collections of numbers,
-        will return an ordered collection consisting of those numbers, that only 
-        occurred in one of those collections.
-
-        For example, for the following input:
-            *{1,2,3,4,5,6}
-            *{9,8,7,6,5}
-        
-        The result shall be {1,2,3,4,7,8,9} because those are the numbers that are 
-        exclusive for one collection only.
-         */
         public static IEnumerable<int> GetExclusiveNumbers(
             IEnumerable<int> numbers1,
             IEnumerable<int> numbers2)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var inter = numbers1.Intersect(numbers2);
+            return numbers1.Except(inter).Concat(numbers2.Except(inter)).Order();
         }
-
-        //Refactoring challenge
-        //TODO implement this method
         public static IEnumerable<string>
             GetRoutesInfo_Refactored(
                 Route route1, Route route2)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var inter = route1.RoutePoints.Intersect(route2.RoutePoints);
+            var exclusive = route1.RoutePoints.Except(inter).Concat(route2.RoutePoints.Except(inter));
+            return inter.Select(x => $"Shared point " + $"{x.Name}" + $" at {x.Point}").Concat(exclusive.Select(x=> $"Unshared point " + $"{x.Name}" + $" at {x.Point}"));
         }
 
-        //do not modify this method
         public static IEnumerable<string> GetRoutesInfo(
            Route route1, Route route2)
         {

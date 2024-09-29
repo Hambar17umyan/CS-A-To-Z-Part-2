@@ -22,7 +22,6 @@
             return words.All(x => x.Length == words.First().Length);
         }
 
-        //do not modify this method
         public static bool AreAllWordsOfTheSameLength(List<string> words)
         {
             if (words.Count == 0 || words.Count == 1)

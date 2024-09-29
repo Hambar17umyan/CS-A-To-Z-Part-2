@@ -13,7 +13,7 @@
         public static IEnumerable<string> BuildCartesianProduct(
             HashSet<int> numbers)
         {
-            //TODO your code goes here
+            //TODO: NotImplemented
             throw new NotImplementedException();
         }
 

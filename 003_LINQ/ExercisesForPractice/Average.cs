@@ -19,15 +19,13 @@
         }
 
         public static float CalculateAverageHeight_Refactored(
-            List<float?> heights, float? defaultIfNull)
+            List<float?> heights, float defaultIfNull)
         {
             if (heights == null || heights.Count == 0)
                 return 0;
-
-            return heights.Average(x => x == null ? defaultIfNull : x);
+            return heights.Average(x => x == null ? defaultIfNull : x.Value);
         }
 
-        //do not modify this method
         public static float CalculateAverageHeight(
             List<float?> heights, float defaultIfNull)
         {
