@@ -29,8 +29,7 @@
         public static IEnumerable<string> GetStudentMarksInfo(
             IEnumerable<Student> students)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return from student in students where student.Marks != null from mark in student.Marks orderby student.Name, mark select $"{student.Name}: {mark}";
         }
 
         //Coding Exercise 2

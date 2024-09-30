@@ -34,8 +34,10 @@
              IEnumerable<Person> people,
              IEnumerable<House> houses)
         {
-            //TODO: partially wrong
-            return people.Join(houses, x => x.Id, x => x.OwnerId, (owner, house) => $"Person: (Id:{owner.Id}), {owner.Name} owns {house.Address}");
+           people.Join(houses, x=>x.Id, x=>x.OwnerId, (x, y) =>
+           {
+               if()
+           })
         }
 
         //Coding Exercise 2
