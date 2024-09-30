@@ -10,7 +10,7 @@ namespace ExercisesForPractice
             IEnumerable<int> days)
         {
 
-            return years.Zip(months, days).Select(x => new DateTime(x.First, x.Second, x.Third));
+            return years.Zip(months, days).Select(x => new DateTime(x.First, x.Second, x.Third)).Order();
         }
 
         public static IEnumerable<string>

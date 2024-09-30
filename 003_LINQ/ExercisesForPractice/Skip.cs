@@ -19,7 +19,7 @@
         public static IEnumerable<int> GetAllAfterFirstDividableBy100_Refactored(
             IEnumerable<int> numbers)
         {
-            return numbers.Where(x => x % 100 == 0).Skip(1);
+            return numbers.SkipWhile(x => x % 100 != 0);
         }
 
         public static IEnumerable<int> GetAllAfterFirstDividableBy100(IEnumerable<int> numbers)

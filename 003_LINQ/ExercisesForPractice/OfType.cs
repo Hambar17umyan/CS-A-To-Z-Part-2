@@ -4,7 +4,7 @@
     {
         public static int? GetTheFirstInteger(IEnumerable<object> objects)
         {
-            return objects.OfType<int>().FirstOrDefault();
+            return objects.OfType<int?>().FirstOrDefault(defaultValue: null);
         }
 
         public static bool AreAllStringsUpperCase(IEnumerable<object> objects)
@@ -15,7 +15,7 @@
         public static DateTime? GetTheLatestDate_Refactored(IEnumerable<object> objects)
         {
             var res = objects.OfType<DateTime>();
-            if(res.Count() == 0)
+            if (res.Count() == 0)
                 return null;
             return res.Max();
         }

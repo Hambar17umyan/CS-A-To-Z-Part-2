@@ -16,10 +16,13 @@
         public static string? GetBestStudentInfo_Refactored(
             IEnumerable<Student> students)
         {
-            return students.Any() ?
-                (from student in students orderby student.Marks.Max() let best = students.Last()
-                select $"Best mark was earned by {best.Name} and it is {best.Marks.Max()}").FirstOrDefault()
-                : null;
+            if (!students.Any())
+                return null;
+
+            var res = (from student in students orderby student.Marks.Any() ? student.Marks.Max() : 0 select student).Last();
+            return $"Best mark was earned by " +
+                   $"{res.Name}" +
+                   $" and it is {res.Marks.Max()}";
         }
 
         public static string GetBestStudentInfo(IEnumerable<Student> students)

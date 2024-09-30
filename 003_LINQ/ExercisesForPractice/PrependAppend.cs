@@ -16,7 +16,15 @@
         public static IEnumerable<int> RemoveDuplicatesFromStartAndEnd(
             IEnumerable<int> numbers)
         {
-            return numbers.Where(x=>x!=numbers.First() & x!= numbers.Last()).Prepend(numbers.First()).Append(numbers.Last());
+            if(numbers == null || !numbers.Any())
+                return Enumerable.Empty<int>();
+            if(numbers.Count() == 1)
+                return numbers;
+            var res = numbers.Where(x => x != numbers.First() & x != numbers.Last());
+            if (res.Any()) 
+                return res.Prepend(numbers.First()).Append(numbers.Last());
+            else 
+                return numbers.Take(1);
         }
 
         public static IEnumerable<string> TrimSentenceAndChangeEndMarker_Refactored(

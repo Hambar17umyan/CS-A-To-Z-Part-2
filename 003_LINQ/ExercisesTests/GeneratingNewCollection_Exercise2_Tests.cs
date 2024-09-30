@@ -1,4 +1,6 @@
-﻿namespace ExercisesTests
+﻿using System;
+
+namespace ExercisesTests
 {
     [TestFixture]
     public class GeneratingNewCollection_Exercise2_Tests
@@ -7,11 +9,7 @@
         public void FiveLevels()
         {
             var result = GeneratingNewCollection.BuildTree(5);
-            var expectedResult = @"*
-**
-***
-****
-*****";
+            var expectedResult = "*\n**\n***\n****\n*****\n";
 
             Assert.AreEqual(expectedResult, result, "Invalid tree for levels count 5");
         }

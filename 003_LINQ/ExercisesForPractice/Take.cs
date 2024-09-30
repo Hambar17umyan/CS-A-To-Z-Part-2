@@ -4,7 +4,7 @@
     {
         public static IEnumerable<int> TakeSome(IEnumerable<int> numbers)
         {
-            return numbers.Count() <= 10 ? numbers.Take(Math.Min(10, numbers.Count())) : numbers.Count() < 100 ? numbers.Take(30) : numbers;
+            return numbers.Count() <= 10 ? numbers.Take(Math.Min(3, numbers.Count())) : numbers.Count() < 100 ? numbers.Take(30) : numbers;
         }
 
         public static IEnumerable<Pet> GetGivenPercentOfHeaviestPets(

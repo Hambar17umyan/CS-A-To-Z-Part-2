@@ -17,12 +17,14 @@
             }).Select(x =>
             {
                 var t = x.Split(' ');
-                return new Person() { FirstName = t[0], LastName = t[1].Substring(0, t.Length - 1), DateOfBirth = DateTime.Parse(t[2]) };
+                return new Person() { FirstName = t[0], LastName = t[1].Split(',')[0], DateOfBirth = DateTime.Parse(t[2]) };
             });
         }
 
         public static TimeSpan TotalDurationOfSongs_Refactored(string allSongsDuration)
         {
+            if(!allSongsDuration.Any())
+                return TimeSpan.Zero;
             return allSongsDuration.Split(',').Select(x => TimeSpan.ParseExact(x, @"m\:ss", null)).Aggregate(new TimeSpan(0, 0, 0), (res, next) => res += next);
         }
 

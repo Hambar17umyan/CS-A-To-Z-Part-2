@@ -10,7 +10,9 @@
         public static IEnumerable<T> GetCollectionWithMostDuplicates<T>(
             IEnumerable<IEnumerable<T>> collections)
         {
-            return collections.OrderBy(x => x.Count() - x.Distinct().Count()).Last();
+            if (collections == null || !collections.Any())
+                return null;
+            return collections.OrderByDescending(x=>x.Count()).OrderBy(x => x.Count() - x.Distinct().Count()).Last();
         }
 
         public static IEnumerable<string> GetWordsShorterThan5Letters_Refactored(

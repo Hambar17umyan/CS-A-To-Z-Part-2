@@ -13,7 +13,7 @@
         public static string FormatPetDataAtIndex(
             IEnumerable<Pet> pets, int index)
         {
-            return (index >= 0 && index < pets.Count() && pets.ElementAt(index) != null) ? $"Pet name: {pets.ElementAt(index)}" : $"Pet data is missing for index {index}";
+            return (index >= 0 && index < pets.Count() && pets.ElementAt(index) != null) ? $"Pet name: {pets.ElementAt(index).Name}" : $"Pet data is missing for index {index}";
         }
 
         public static bool IsEmptyAtIndex_Refactored(IEnumerable<string> words, int index)

@@ -18,7 +18,7 @@
              GetStudentsAverageMarks_Refactored(
                  IEnumerable<Student> students)
         {
-            return students.Select(x => (x.Marks.Average(), $"{x.FirstName} " +
+            return students.Select(x => (x.Marks.Any()? x.Marks.Average() : 0, $"{x.FirstName} " +
                     $"{x.LastName} born on" +
                     $" {x.DateOfBirth.ToString("d")}")).ToDictionary(x => x.Item2, y => y.Item1);
         }

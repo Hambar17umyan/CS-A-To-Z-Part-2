@@ -15,7 +15,9 @@
         }
         public static double MaxAverageOfMarks(IEnumerable<Student> students)
         {
-            return students.Select(x => x.Marks.Average()).Max();
+            if(!students.Any())
+                return 0;
+            return students.Select(x => x.Marks.Any()?x.Marks.Average() : 0).Max();
         }
 
         public static float CalculateAverageHeight_Refactored(

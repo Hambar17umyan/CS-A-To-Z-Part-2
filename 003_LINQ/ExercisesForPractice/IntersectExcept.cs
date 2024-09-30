@@ -8,7 +8,7 @@ namespace ExercisesForPractice
             IEnumerable<string> words1,
             IEnumerable<string> words2)
         {
-            return words1.Intersect(words2.Select(x => x.ToLower())).Count();
+            return words1.Select(x=>x.ToLower()).Intersect(words2.Select(x => x.ToLower())).Count();
         }
 
         public static IEnumerable<int> GetExclusiveNumbers(

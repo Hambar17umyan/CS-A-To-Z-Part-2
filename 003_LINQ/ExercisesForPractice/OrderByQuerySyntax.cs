@@ -10,7 +10,7 @@ namespace ExercisesForPractice
             OrderFromLongestToShortest(
                 IEnumerable<TimeSpan> timeSpans)
         {
-            return from timespan in timeSpans orderby timespan.Seconds select timespan;
+            return from timespan in timeSpans orderby -timespan select timespan;
         }
         public static IEnumerable<Point> OrderPoints(
              IEnumerable<Point> points)

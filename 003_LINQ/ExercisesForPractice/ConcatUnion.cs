@@ -7,7 +7,7 @@ namespace ExercisesForPractice
         public static IEnumerable<News> SelectRecentAndImportant(
             IEnumerable<News> newsCollection)
         {
-            return newsCollection.OrderBy(x => x.PublishingDate).TakeLast(3).Union(newsCollection.Where(x => x.Priority == Priority.High));
+            return newsCollection.OrderBy(x => x.PublishingDate).TakeLast(3).OrderByDescending(x => x.PublishingDate).Union(newsCollection.Where(x => x.Priority == Priority.High));
         }
 
         public static string CleanWord(string word)
@@ -19,7 +19,7 @@ namespace ExercisesForPractice
         public static IEnumerable<int> GetPerfectSquares_Refactored(
             IEnumerable<int> numbers1, IEnumerable<int> numbers2)
         {
-            return numbers1.Concat(numbers2).Distinct().Where(x => Math.Pow(Math.Sqrt(x), 2) == x);
+            return numbers1.Concat(numbers2).Distinct().Where(x => Math.Pow((int)Math.Sqrt(x), 2) == x).Order();
         }
 
         public static IEnumerable<int> GetPerfectSquares(IEnumerable<int> numbers1, IEnumerable<int> numbers2)

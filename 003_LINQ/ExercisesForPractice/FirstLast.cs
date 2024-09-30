@@ -4,20 +4,35 @@
     {
         public static string FindFirstNameInTheCollection(IEnumerable<string> words)
         {
-            return words.First(x => x.Count() > 1 && x[0] >= 'A' && x[0] <= 'Z' && x.Where((x, y) => y > 0).All(x => x >= 'a' & x <= 'Z'));
+            try
+            {
+                return words.First(x => x.Count() > 1 && x[0] >= 'A' && x[0] <= 'Z' && x.Skip(1).All(y => y <= 'z' && y >= 'a'));
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public static Person GetYoungest(IEnumerable<Person> people)
         {
             var now = DateTime.Now;
 #pragma warning disable CS8603
-            return people.OrderBy(x=>now - x.DateOfBirth).FirstOrDefault();
+            return people.OrderBy(x => now - x.DateOfBirth).FirstOrDefault();
 #pragma warning restore CS8603 
         }
 
         public static Person FindOwnerOf_Refactored(Pet pet, IEnumerable<Person> people)
         {
-            return people.First(x => x.Pets.Contains(pet));
+            try
+            {
+                return people.First(x => x.Pets.Contains(pet));
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static Person FindOwnerOf(Pet pet, IEnumerable<Person> people)

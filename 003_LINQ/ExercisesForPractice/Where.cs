@@ -10,13 +10,13 @@
         public static IEnumerable<string> GetProperlyIndexedWords(
             IEnumerable<string> words)
         {
-            return words.Where((x, y) => (y + 1).ToString() == (string)x.TakeWhile(y => y != '.'));
+            return words.Where((x, y) => int.TryParse(x.Split('.')[0], out var res) && res == y + 1);
         }
 
         public static IEnumerable<Person> GetMultipleFishOwners_Refactored(
             IEnumerable<Person> people)
         {
-            return people.Where(x => x.Pets.Count() > 1);
+            return people.Where(x => x.Pets.Count(x=>x.PetType == PetType.Fish) > 1);
         }
 
         public static IEnumerable<Person> GetMultipleFishOwners(
